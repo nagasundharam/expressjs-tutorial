@@ -15,6 +15,15 @@ app.get('/',(req,res)=>{
 })
 // :username used to access the url name
 
+//post request
+app.post('/users',express.json(),(req,res)=> {
+    const {name,email} = req.body;
+
+    res.json({
+        messase:` created a ${name} with  ${email}  successfully`
+    })
+})
+
 app.use('/user',router);
 //
 
