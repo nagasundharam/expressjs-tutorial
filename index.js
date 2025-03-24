@@ -10,14 +10,21 @@ const PORT = 3000;
 //Define in a route
 
 
-app.use((req,res,next)=> {
+app.use('/welcome',(req,res,next)=> {
     console.log('A new request received at'+ Date.now());
     next();
+})
+app.get('/welcome',(req,res)=> {
+    res.json("response has been sended");
 })
 
 app.get('/',(req,res)=>{
     res.send('Hello Express');
 
+})
+
+app.get('/',(req,res)=>{
+    res.send('Hello naga');
 })
 
 
