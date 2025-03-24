@@ -38,6 +38,17 @@ app.put('/users/:id',(req,res)=>{
     })
 })
 
+// delete method
+
+app.delete('/users/:id',(req,res)=> {
+    const userId  = req.params.id;
+   
+
+    res.json({
+        message:`user id ${userId} is deleted successfully`
+    })
+})
+
 app.use('/user',router);
 //
 
