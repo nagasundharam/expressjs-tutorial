@@ -1,5 +1,6 @@
 const express = require('express');
 const { usernameController, searchController } = require('./controller');
+const router = require('./route');
 
 
 const app = express();
@@ -13,10 +14,10 @@ app.get('/',(req,res)=>{
 
 })
 // :username used to access the url name
-app.get('/user/:username',usernameController);
 
+app.use('/user',router);
 //
-app.get('/search',searchController)
+
 app.listen(PORT,()=>{
     console.log(`Server is running on http://localhost:${PORT}`);
 })
