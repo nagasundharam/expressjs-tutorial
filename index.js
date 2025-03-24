@@ -49,6 +49,14 @@ app.delete('/users/:id',(req,res)=> {
     })
 })
 
+app.get('/things/:name/:id([0-9]{5})',(req,res)=> {
+     const { name , id} = req.params;
+
+     res.json({
+        id,name
+     });
+})
+
 app.use('/user',router);
 //
 
