@@ -18,6 +18,15 @@ app.use((req,res,next)=> {
 
 })
 
+app.get('/error',()=>{
+    throw new Error('This is text error');
+})
+
+app.use((err,req,res,next)=>{
+    console.error(err.message);
+    res.send("Internal server Error");
+})
+
 app.get('/',(req,res)=>{
     console.log('middle');
     res.send('Hello Express');
