@@ -8,17 +8,18 @@ const app = express();
 const PORT = 3000;
 
 //Define in a route
+// event controller in middle ware
+app.use((req,res,next)=> {
+    console.log("Start")
+    res.on('finish',()=> {
+        console.log("End");
+    })
+    next()
 
-
-app.use('/welcome',(req,res,next)=> {
-    console.log('A new request received at'+ Date.now());
-    next();
-})
-app.get('/welcome',(req,res)=> {
-    res.json("response has been sended");
 })
 
 app.get('/',(req,res)=>{
+    console.log('middle');
     res.send('Hello Express');
 
 })
