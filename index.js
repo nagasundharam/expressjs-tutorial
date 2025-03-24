@@ -13,14 +13,28 @@ app.get('/',(req,res)=>{
     res.send('Hello Express');
 
 })
+
+
+app.use(express.json());
 // :username used to access the url name
 
 //post request
-app.post('/users',express.json(),(req,res)=> {
+app.post('/users',(req,res)=> {
     const {name,email} = req.body;
 
     res.json({
         messase:` created a ${name} with  ${email}  successfully`
+    })
+})
+
+// put method
+
+app.put('/users/:id',(req,res)=>{
+    const userId = req.params.id;
+    const {name,email} = req.body;
+
+    res.json({
+        message:`user id${userId} is updated to  ${name} and ${email}`
     })
 })
 
