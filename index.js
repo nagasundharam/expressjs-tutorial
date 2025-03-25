@@ -1,20 +1,31 @@
 const express = require('express');
 const { usernameController, searchController } = require('./controller');
 const router = require('./route');
-
+const multer = require('multer');
+const storage = require('./config/multer.jsx');
 
 const app = express();
-
+const upload = multer({storage,limits:{
+    fileSize:10240000
+    
+}
+});
 const PORT = 3000;
 
 // set EJS as the view engine
 
-app.set('view engine','ejs')
-app.use('/public',express.static('public'));
+app.use(express.urlencoded({extended:true}));
+
+app.use(upload.single('file'));
 app.get('/',(req,res)=>{
-    const userName = 'nagasundhram'
-    res.render('index',{userName});
+   res.send('Hello wha ')
   
+})
+
+app.post('/form',(req,res)=> {
+console.log(req.body);
+res.send('Form Received');
+console.log(req.file);
 })
 
 app.listen(PORT,()=>{
